@@ -5,7 +5,6 @@ from .models import SiteSettings, ServiceCategory, Service, Lead
 @admin.register(SiteSettings)
 class SiteSettingsAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
-        # Разрешаем создать только одну запись
         if SiteSettings.objects.exists():
             return False
         return super().has_add_permission(request)
