@@ -1,0 +1,81 @@
+# ======================
+# Python
+# ======================
+__pycache__/
+*.py[cod]
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+*.egg
+pip-wheel-metadata/
+.python-version
+
+# virtualenv
+.venv/
+venv/
+env/
+ENV/
+
+# ======================
+# Django
+# ======================
+*.log
+local_settings.py
+
+# DB
+db.sqlite3
+db.sqlite3-journal
+
+# media / user uploads
+media/
+
+# collectstatic output
+staticfiles/
+
+# If you store STATIC_ROOT in /static
+static/
+
+# ======================
+# Environment variables
+# ======================
+.env
+.env.*
+!.env.example
+
+# ======================
+# IDE / Editors
+# ======================
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ======================
+# OS
+# ======================
+.DS_Store
+Thumbs.db
+
+# ======================
+# Tests / Coverage
+# ======================
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+
+# ======================
+# Build / Frontend
+# ======================
+dist/
+build/
+node_modules/
+
+# ======================
+# Docker / runtime
+# ======================
+docker-data/
+*.pid
+celerybeat-schedule
+celerybeat.pid
