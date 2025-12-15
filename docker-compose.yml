@@ -1,0 +1,37 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tme_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - media_volume:/app/media
+    env_file:
+      - .env
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py collectstatic --noinput &&
+             gunicorn backend.wsgi:application --bind 0.0.0.0:8000 --workers 4"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ../../frontend/uma-tme-frontend
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_URL=https://tm-engineering.online
+    container_name: tme_frontend
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ../../ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  media_volume:
